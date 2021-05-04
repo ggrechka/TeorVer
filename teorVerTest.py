@@ -57,24 +57,49 @@ def f1():
         if b[i] == str5:
             x1 = a[i]
 
-    return otvet, x1
+    return s, otvet, x1
 
 
 def f2():
     form1 = "Найдите вероятность, что наудачу брошенная в круг точка окажется вне вписанного в него квадрата"
-    form2 = "Найдите вероятность, что наудачу брошенная в круг точка окажется внутри вписанного в него правильного треугольника"
-    form3 = "Найдите вероятность, что наудачу брошенная в круг точка окажется ВНЕ вписанного в него правильного треугольника"
+    form2 = "Найдите вероятность, что наудачу брошенная в круг точка окажется внутри вписанного в него правильного " \
+            "треугольника "
+    form3 = "Найдите вероятность, что наудачу брошенная в круг точка окажется ВНЕ вписанного в него правильного " \
+            "треугольника "
 
-    ans = ["1-2/pi", "3*sqrt(3)/4*pi", "1-3*sqrt(3)/4*pi"]
-    a=random.choice([form1,form2,form3])
-    ans1= random.randint(1,4)+ "/" +
+    ans = ["1-2/pi", "3*sqrt(3)/4*pi", "1-3*sqrt(3)/4*pi"]  # правильные ответы
+    a = ["а)", "б)", "в)", "г)"]
+    s = random.choice([form1, form2, form3])
 
-    notans=[]
-    b = ["а)", "б)", "в)", "г)"]
+    # неправильные ответы
+    notans = ["1-" + str(random.randint(1, 4)) + "/" + "pi", "1" + "/" + str(random.randint(2, 8)) + "pi",
+              "pi" + "/" + str(random.randint(2, 38)),
+              "sqrt(3)" + "/" + str(random.randint(1, 8))]
+    vernOtvet = {
+        form1: ans[0],
+        form2: ans[1],
+        form3: ans[2],
+    }
+    variant = []
+    variant.append(str(vernOtvet[s]))
+    variant = variant + (random.sample(notans, 3))
+    random.shuffle(variant)
+    otvet = ""
+    for i in range(4):
+        otvet = otvet + a[i] + variant[i] + "   "
+        if variant[i] == vernOtvet[s]:
+            x2 = str(a[i])
+
+    return s, otvet, x2
 
 
 # 1 задание
-
 a = []  # список с ответами на задания
-answer1, x1 = f1()
-a.append(x1)
+#s1, answer1, x1 = f1()
+#a.append(x1)
+#print(s1, answer1, x1, "\n")
+
+# 2 задание
+s2, answer2, x2 = f2()
+a.append(x2)
+print(s2, "\n", answer2, x2)
