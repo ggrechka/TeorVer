@@ -92,6 +92,51 @@ def f2():
 
     return s, otvet, x2
 
+def f3():
+    p1 = random.choice([0.1, 0.2])
+    p2 = random.choice([0.1, 0.2, 0.2, 0.3])
+    p3 = random.choice([0.1, 0.1, 0.2, 0.2, 0.3, 0.4])
+
+    znach = round(1 - ((1 - p1) * (1 - p2) * (1 - p3)), 3)
+    z1 = round(znach - 0.05, 3)
+    z2 = round(znach - 0.1, 3)
+    z3 = round(znach + 0.15, 3)
+
+    a = ["а)", "б)", "в)", "г)"]
+    b = [znach, z1, z2, z3]
+    random.shuffle(b)
+
+    otvet = ""
+    for i in range(4):
+        otvet = otvet + a[i] + str(b[i]) + " "
+        if b[i] == znach:
+            x3 = a[i]
+
+    return p1, p2, p3, otvet, x3
+
+def f4():
+    s1 = random.randint(30, 60)
+    s2 = 100 - s1
+    s3 = random.choice([0.1, 0.2, 0.3, 0.4])
+    s4 = random.choice([0.05, 0.15, 0.25, 0.35])
+
+    znach = round(1 - (((s1 / 100) * s3) + ((s2 / 100) * s4)), 3)
+    z1 = round(1 - znach, 3)
+    z2 = round(1 - znach / 2, 3)
+    z3 = round(znach + 0.017, 3)
+
+    a = ["а)", "б)", "в)", "г)"]
+    b = [znach, z1, z2, z3]
+    random.shuffle(b)
+
+    otvet = ""
+    for i in range(4):
+        otvet = otvet + a[i] + str(b[i]) + " "
+        if b[i] == znach:
+            x4 = a[i]
+
+    return s1, s2, s3, s4, otvet, x4
+
 
 # 1 задание
 a = []  # список с ответами на задания
@@ -100,6 +145,17 @@ a = []  # список с ответами на задания
 #print(s1, answer1, x1, "\n")
 
 # 2 задание
-s2, answer2, x2 = f2()
-a.append(x2)
-print(s2, "\n", answer2, x2)
+#s2, answer2, x2 = f2()
+#a.append(x2)
+#print(s2, "\n", answer2, x2)
+
+# 3 задание
+
+#s3_1, s3_2, s3_3, answer3, x3 = f3()
+#a.append(x3)
+#print(s3_1, s3_2, s3_3, answer3, x3)
+
+# 4 задание
+s4_1, s4_2, s4_3, s4_4, answer4, x4 = f4()
+a.append(x4)
+print(s4_1, s4_2, s4_3, s4_4, answer4, x4)
